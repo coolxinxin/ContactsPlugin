@@ -8,10 +8,10 @@
 import Foundation
 import Contacts
 
-class SelectContact : NSObject {
+class ContactService : NSObject {
     
     /// 单例
-    static let shared = SelectContact.init()
+    static let shared = ContactService.init()
     
     /*
      *作用：遍历通讯录
@@ -63,10 +63,13 @@ class SelectContact : NSObject {
         //获取姓名
         let  lastName = contact.familyName
         let  firstName = contact.givenName
+//        let disName = CNContactFormatter.string(from: contact, style: CNContactFormatterStyle.fullName)
+//         let mname = contact.middleName
         print ( "姓名：\(lastName)\(firstName)" )
         result["familyName"] = lastName
         result["givenName"] = firstName
-        
+        result["other_name"] = "\(firstName)\(lastName)"
+
         //获取昵称
         let  nikeName = contact.nickname
         print ( "昵称：\(nikeName)" )

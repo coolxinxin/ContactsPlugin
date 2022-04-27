@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class ContactsPlugin {
@@ -23,13 +24,25 @@ class ContactsPlugin {
 }
 
 class Contact {
-  String? otherName, otherMobile, lastTime;
+  String? otherName, lastTime;
+  List<Phone>? phones = [];
 
-  Contact({this.otherName, this.otherMobile, this.lastTime});
+  Contact({this.otherName, this.phones, this.lastTime});
 
   Contact.fromMap(Map m) {
     otherName = m["other_name"];
-    otherMobile = m["other_mobile"];
+    phones = (m["phones"] as List?)?.map((e) => Phone.fromMap(e)).toList();
     lastTime = m["last_time"];
+  }
+}
+
+class Phone{
+  String? label , value;
+
+  Phone({this.label, this.value,});
+
+  Phone.fromMap(map){
+    label = map["label"];
+    value = map["value"];
   }
 }

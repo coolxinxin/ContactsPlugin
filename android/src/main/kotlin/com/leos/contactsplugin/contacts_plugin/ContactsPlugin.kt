@@ -73,9 +73,10 @@ class ContactsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             contacts.forEach {
                 val hashMap = HashMap<String, String>()
                 hashMap["other_name"] = it.name
-                if (it.number != null && it.number.size > 0) {
-                    hashMap["other_mobile"] = it.number[0].number
-                }
+//                if (it.number != null && it.number.size > 0) {
+//                    hashMap["other_mobile"] = it.number[0].number
+//                }
+                hashMap["phones"] = it.number
                 hashMap["last_time"] = formatTime(it.lastUpdate)
                 list.add(hashMap)
             }
