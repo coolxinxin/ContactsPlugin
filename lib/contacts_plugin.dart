@@ -11,8 +11,8 @@ class ContactsPlugin {
     return version;
   }
 
-  static Future<Map?> selectContact() async {
-    return await _channel.invokeMapMethod("selectContact");
+  static Future<SelectContact> selectContact() async {
+    return SelectContact.fromMap(await _channel.invokeMapMethod("selectContact") as Map);
   }
 
   static Future<List<Contact>> getAllContacts() async {
@@ -21,6 +21,17 @@ class ContactsPlugin {
     return contacts.map((m) => Contact.fromMap(m)).toList();
   }
 
+}
+
+class SelectContact{
+  String? name, number;
+
+  SelectContact({this.name, this.number});
+
+  SelectContact.fromMap(Map m){
+    name = m["name"];
+    number = m["number"];
+  }
 }
 
 class Contact {

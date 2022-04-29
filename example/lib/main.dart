@@ -71,13 +71,15 @@ class _MyAppState extends State<MyApp> {
               click: () async {
                 if (await Permission.contacts.request().isGranted) {
                   ContactsPlugin.selectContact().then((value) {
-                    if (value != null) {
-                      var name = value["name"];
-                      var number = value["number"];
+                    // if (value != null) {
+                    //   var name = value["name"] ?? "";
+                    //   var number = value["number"] ?? "";
+                    var name = value.name ?? "";
+                    var number = value.number ?? "";
                       setState(() {
                         selectText = name + "/" + number;
                       });
-                    }
+                    // }
                     debugPrint("Permission granted");
                   });
                 } else {

@@ -30,7 +30,8 @@ class ContactService : NSObject {
          let  store =  CNContactStore ()
          
          //获取Fetch,并且指定要获取联系人中的什么属性
-         let  keys = [ CNContactFamilyNameKey ,  CNContactGivenNameKey ,  CNContactNicknameKey ,
+         let  keys = [ CNContactFamilyNameKey ,  CNContactGivenNameKey ,
+                       CNContactNicknameKey ,  CNContactMiddleNameKey,
                      CNContactOrganizationNameKey ,  CNContactJobTitleKey ,
                      CNContactDepartmentNameKey ,  CNContactPhoneNumbersKey ,
                      CNContactEmailAddressesKey ,  CNContactPostalAddressesKey ,
@@ -63,12 +64,14 @@ class ContactService : NSObject {
         //获取姓名
         let  lastName = contact.familyName
         let  firstName = contact.givenName
+        let middleName = contact.middleName
 //        let disName = CNContactFormatter.string(from: contact, style: CNContactFormatterStyle.fullName)
 //         let mname = contact.middleName
         print ( "姓名：\(lastName)\(firstName)" )
         result["familyName"] = lastName
         result["givenName"] = firstName
-        result["other_name"] = "\(firstName)\(lastName)"
+        result["other_name"] = "\(firstName)\(middleName)\(lastName)"
+        result["last_time"] = ""
 
         //获取昵称
         let  nikeName = contact.nickname
