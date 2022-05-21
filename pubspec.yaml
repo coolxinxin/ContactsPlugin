@@ -1,6 +1,6 @@
 name: contacts_plugin_plus
-description: Contacts Flutter plugin.
-version: 0.0.1
+description: Contacts Flutter plugin.Support Android and iOS to select contacts and get all contacts
+version: 0.0.2
 homepage: https://github.com/coolxinxin/ContactsPlugin
 
 environment:
