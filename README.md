@@ -1,17 +1,35 @@
 # contacts_plugin
 
-Contacts Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##支持Android和iOS端
 
 [获取联系人和选择联系人使用示例](https://github.com/coolxinxin/ContactsPlugin/blob/main/example/lib/main.dart)
 
+####选择联系人
+```
+  ContactsPlugin.selectContact().then((value) {
+    // if (value != null) {
+    //   var name = value["name"] ?? "";
+    //   var number = value["number"] ?? "";
+    var name = value.name ?? "";
+    var number = value.number ?? "";
+    setState(() {
+      selectText = name + "/" + number;
+    });
+    // }
+  });
+```
+####获取全部联系人
+```
+  ContactsPlugin.getAllContacts().then((value) {
+    for (var contact in value) {
+      var number = contact.phones?.first.value ?? "";
+      var name = contact.otherName ?? "";
+      debugPrint("phone:" + number);
+      debugPrint("name:" + name);
+    }
+    setState(() {
+      allContacts = "The number of all contacts is:" +
+          value.length.toString();
+    });
+  });
+```

@@ -76,12 +76,12 @@ class _MyAppState extends State<MyApp> {
                     //   var number = value["number"] ?? "";
                     var name = value.name ?? "";
                     var number = value.number ?? "";
-                      setState(() {
-                        selectText = name + "/" + number;
-                      });
+                    setState(() {
+                      selectText = name + "/" + number;
+                    });
                     // }
-                    debugPrint("Permission granted");
                   });
+                  debugPrint("Permission granted");
                 } else {
                   //permission denied 使用是请自行处理权限
                   debugPrint("Permission denied");
@@ -95,10 +95,10 @@ class _MyAppState extends State<MyApp> {
                 if (await Permission.contacts.request().isGranted) {
                   ContactsPlugin.getAllContacts().then((value) {
                     for (var contact in value) {
-                      if(contact.phones!=null && contact.phones!.isNotEmpty && contact.phones![0].value!=null) {
-                        debugPrint("phone:"+contact.phones![0].value!);
-                      }
-                      debugPrint("name:"+contact.otherName!);
+                      var number = contact.phones?.first.value ?? "";
+                      var name = contact.otherName ?? "";
+                      debugPrint("phone:" + number);
+                      debugPrint("name:" + name);
                     }
                     setState(() {
                       allContacts = "The number of all contacts is:" +

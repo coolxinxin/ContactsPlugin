@@ -44,9 +44,17 @@ class ContactSelect private constructor(
     }
 
     private fun queryContact(data: Intent?) {
-        val uri = data?.data ?: return
+        val uri = data?.data
+        val hashMap = HashMap<String, String>()
         var number = ""
         var name = ""
+        if (uri==null){
+            hashMap["name"] = name
+            hashMap["number"] = number
+            result.success(hashMap)
+            listener.removeActivityResultListener(this)
+            return
+        }
         val cursor = activity?.contentResolver?.query(uri,
             arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER,
                 ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME),
@@ -58,7 +66,6 @@ class ContactSelect private constructor(
             }
             close()
         }
-        val hashMap = HashMap<String, String>()
         hashMap["name"] = name
         hashMap["number"] = number
         result.success(hashMap)
