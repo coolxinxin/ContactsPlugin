@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:contacts_plugin/contacts_plugin.dart';
+import 'package:contacts_plugin_plus/contacts_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';

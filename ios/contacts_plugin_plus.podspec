@@ -3,15 +3,15 @@
 # Run `pod lib lint contacts_plugin.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'contacts_plugin'
-  s.version          = '0.0.1'
+  s.name             = 'contacts_plugin_plus'
+  s.version          = '0.0.3'
   s.summary          = 'Contacts Flutter project.'
   s.description      = <<-DESC
 Contacts Flutter project.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/coolxinxin/ContactsPlugin'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Your Company' => '2438565661@qq.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
