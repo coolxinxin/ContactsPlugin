@@ -95,7 +95,11 @@ class _MyAppState extends State<MyApp> {
                 if (await Permission.contacts.request().isGranted) {
                   ContactsPlugin.getAllContacts().then((value) {
                     for (var contact in value) {
-                      var number = contact.phones?.first.value ?? "";
+                      var number = "";
+                      if (contact.phones != null &&
+                          contact.phones!.isNotEmpty) {
+                        number = contact.phones?.first.value ?? "";
+                      }
                       var name = contact.otherName ?? "";
                       debugPrint("phone:" + number);
                       debugPrint("name:" + name);

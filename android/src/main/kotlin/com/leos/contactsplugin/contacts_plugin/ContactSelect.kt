@@ -48,17 +48,21 @@ class ContactSelect private constructor(
         val hashMap = HashMap<String, String>()
         var number = ""
         var name = ""
-        if (uri==null){
+        if (uri == null) {
             hashMap["name"] = name
             hashMap["number"] = number
             result.success(hashMap)
             listener.removeActivityResultListener(this)
             return
         }
-        val cursor = activity?.contentResolver?.query(uri,
-            arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER,
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME),
-            null, null, null)
+        val cursor = activity?.contentResolver?.query(
+            uri,
+            arrayOf(
+                ContactsContract.CommonDataKinds.Phone.NUMBER,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+            ),
+            null, null, null
+        )
         cursor?.apply {
             while (moveToNext()) {
                 number = getString(0)

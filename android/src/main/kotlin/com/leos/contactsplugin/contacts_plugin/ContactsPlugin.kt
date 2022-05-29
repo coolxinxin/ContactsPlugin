@@ -67,16 +67,16 @@ class ContactsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private fun getAllContacts(result: Result) {
 //        threadPoolExecutor?.execute {
-        val list = ArrayList<HashMap<String, Any>>()
+        val list = ArrayList<HashMap<String, Any?>>()
         activity?.apply {
             val contacts = ContactUtils.getAllContacts(this)
             contacts.forEach {
-                val hashMap = HashMap<String, Any>()
+                val hashMap = HashMap<String, Any?>()
                 hashMap["other_name"] = it.name
 //                if (it.number != null && it.number.size > 0) {
 //                    hashMap["other_mobile"] = it.number[0].number
 //                }
-                val numberList = mutableListOf<HashMap<String, String>>()
+                val numberList = mutableListOf<HashMap<String, String?>>()
                 it.number?.forEach { number ->
                     numberList.add(hashMapOf("label" to number.type_label,
                         "value" to number.number))
