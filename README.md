@@ -4,6 +4,15 @@
 
 [获取联系人和选择联系人使用示例](https://github.com/coolxinxin/ContactsPlugin/blob/main/example/lib/main.dart)
 
+### 使用
+```
+flutter pub add contacts_plugin_plus  //终端运行此命令
+```
+```
+dependencies:
+  contacts_plugin_plus: any
+```
+
 #### 选择联系人
 ```
   ContactsPlugin.selectContact().then((value) {
